@@ -14,11 +14,11 @@ END = '\033[0m'
 
 
 def print_ok(message):
-    print(f'{message} {OK} OK {END}')
+    print(f'{message}\t\t{OK}OK {END}')
 
 
 def print_error(message):
-    print(f'{message} {ERR} ERROR {END}')
+    print(f'{message}\t\t{ERR}ERROR {END}')
 
 
 if __name__ == '__main__':
