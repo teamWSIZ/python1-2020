@@ -8,7 +8,7 @@ print(f'x + y = {z}')
 print(f'x do potęgi y = {w}')
 # teraz jak działają napisy (string-i) w python
 
-s = 'abrać'
+s = 'abra'
 b = 'kadabra'
 print(s)
 print(s+b)
