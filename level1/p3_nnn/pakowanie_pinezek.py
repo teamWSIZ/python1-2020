@@ -7,7 +7,12 @@ import unittest
 # liczba_pinezek > 0, pinezek_w_opakowaniu > 0; obie są liczbami całkowitymi
 
 def ile_opakowan(liczba_pinezek, pinezek_w_opakowaniu):
-    return 0
+    full = liczba_pinezek // pinezek_w_opakowaniu
+    answer = full
+    if full * pinezek_w_opakowaniu < liczba_pinezek:
+        # jakieś zostały
+        answer += 1
+    return answer
 
 
 class TestSum(unittest.TestCase):
