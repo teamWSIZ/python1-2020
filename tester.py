@@ -21,5 +21,3 @@ def test(test_name, solution_function, correct_answer, **kwargs):
 
 
 # test('test 1', max_element, correct_answer=2, lista=[2, 1], wykladnik=1)
-# test('test 2', [1, 2], 2, max_element)
-# test('test 3', [3, 2, 1], 3, max_element)
