@@ -9,7 +9,13 @@ klienci = [4,6,9,1,10,5,8,30,4,2,1]
 
 
 def ile_w_30min(klienci):
-    return 0
+    window = sum(klienci[:3])
+    result = window
+    for i in range(3, len(klienci)):
+        window += klienci[i]
+        window -= klienci[i - 3]
+        result = max(result, window)
+    return result
 
 
 class TestSum(unittest.TestCase):
