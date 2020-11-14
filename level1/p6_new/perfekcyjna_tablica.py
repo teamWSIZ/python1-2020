@@ -5,7 +5,7 @@ from typing import List
 Tablica liczb jest "perfekcyjna" jeśli suma jej liczb jest podzielna przez jej długość. 
 Np. [1,2,3] jest perfekcyjna, ale [1,1,1,2] nie jest. 
 Mając daną tablicę zwiększyć - jeśli potrzeba - ostatnią liczbę minimalnie - 
-tak by stała się perfekcyjna. Np. dla [1,1,1,2] wystarczy wziąć [1,1,1,3]. 
+tak by stała się perfekcyjna. Np. dla [1,1,1,2] wystarczy wziąć [1,1,1,5]. 
 
 """
 from random import randint, seed
