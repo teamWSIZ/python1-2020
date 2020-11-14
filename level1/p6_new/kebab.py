@@ -14,12 +14,7 @@ tj. całe jego zamówienie zostanie zrealizowane.
 
 
 def kebab(x, y, xx, yy, zam: List):
-    for i in range(len(zam)):
-        if (xx - x * zam[i] < 0) or (yy - y * zam[i] < 0):
-            return i - 1
-        xx -= x * zam[i]
-        yy -= y * zam[i]
-    return len(zam) - 1
+    return 0
 
 
 class TestSum(unittest.TestCase):
@@ -38,6 +33,9 @@ class TestSum(unittest.TestCase):
 
     def test_5(self):
         self.assertEqual(kebab(1, 1, 10, 10, [1]), 0, '')
+
+    def test_7(self):
+        self.assertEqual(kebab(1, 1, 10, 10, [1, 1]), 1, '')
 
     def test_6(self):
         seed(112)
