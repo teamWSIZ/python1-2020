@@ -7,10 +7,30 @@ Sprawdzić czy suma każdego z rzędów i każdej z kolumn jest równa (wszystki
 
 """
 
+"""
+1 1 1 
+1 1 1
+2 2 2 
+
+
+"""
+
 
 def sudoku(tab: List):
-   return True
+    goal = sum(tab[0])  # suma w 0 rzędzie
 
+    for r in tab:  # sprawdzenie sumy rzędów
+        if sum(r) != goal:
+            return False
+
+    n = len(tab)  # wielkość tablic
+    for c in range(n):  # pętla po kolumnach
+        su = 0
+        for r in range(n):  # pętla po wierszach w wybranej kolumnie
+            su += tab[r][c]
+        if su != goal:
+            return False
+    return True
 
 
 class TestSum(unittest.TestCase):
@@ -24,6 +44,9 @@ class TestSum(unittest.TestCase):
     def test_3(self):
         self.assertEqual(sudoku([[1, 1], [2, 2]]), False, '')
 
+    def test_3x(self):
+        self.assertEqual(sudoku([[1, 1, 1], [1, 1, 1], [2, 2, 2]]), False, '')
+
     def test_4(self):
         w = [[1 for i in range(10)] for _ in range(10)]
         self.assertEqual(sudoku(w), True, '')
@@ -32,8 +55,6 @@ class TestSum(unittest.TestCase):
         w = [[1 for i in range(10)] for _ in range(10)]
         w[0][0] = 2
         self.assertEqual(sudoku(w), False, '')
-
-
 
 
 if __name__ == '__main__':

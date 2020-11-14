@@ -10,6 +10,11 @@ Sprawdzić czy Ciel wróci na pozycję 0 (po pewnym, możliwe że nawet długim,
 
 
 def origin(w: List):
+    pozycja = 0
+    for i in range(300):
+        pozycja = w[pozycja]
+        if pozycja == 0:
+            return True
     return False
 
 
