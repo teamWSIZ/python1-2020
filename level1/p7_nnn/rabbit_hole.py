@@ -13,6 +13,20 @@ Ocenić, czy królik przejdzie przez całą norę bez problemów.
 
 """
 
+# tu da się przejść
+# ------------------------
+# → ........x......xxx....
+# → .....xx....xxx.....xxx
+# ------------------------
+
+# ↓↓ tu nie da się przejść
+# ------------------------
+# → ........x.....xxxx....
+# → .....xx....xxx.....xxx
+# ------------------------
+
+
+
 
 def rabbit_hole(map: List[str]):
     return True
