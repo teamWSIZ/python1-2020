@@ -14,7 +14,13 @@ Policzyć ile konfliktów powstanie w danym rzędzie.
 
 
 def elbows(row):
-    return 0
+    previous = 'x'
+    count = 0
+    for next in row:
+        if next == 'L' and previous == 'R':
+            count += 1
+        previous = next
+    return count
 
 
 class TestSum(unittest.TestCase):
@@ -36,8 +42,6 @@ class TestSum(unittest.TestCase):
 
     def test_6(self):
         self.assertEqual(elbows('LLLLLLLRRRRRRRRRRRR'), 0, '')
-
-
 
 
 if __name__ == '__main__':

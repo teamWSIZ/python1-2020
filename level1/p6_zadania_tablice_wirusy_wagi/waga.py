@@ -5,7 +5,7 @@ from random import randint, seed
 
 """
 Podana jest lista zabytkowych monet, każda oznaczona jedynie ich wagą. 
-Monety trzeba podzielić na dwie grupy o równej (łącznej) wadze. Ocenić, czy da się to zrobić...
+Monety trzeba podzielić na monety grupy o równej (łącznej) wadze. Ocenić, czy da się to zrobić...
 
 - wersja 1, prosta: poprzez wyznaczenie pozycji w liście tak, że elementy 
     na lewo od tej pozycji wchodzą do grupy1, a na prawo od niej (włącznie) do grupy 2. 

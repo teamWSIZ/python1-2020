@@ -3,9 +3,9 @@ from typing import List
 
 """
 Amoeba pożera bakterie różnej wielkości, rosnąc przy każdym posiłku o wielkość tego co zjdała. 
-Formalnie amoeba ma na początku wielkość X, i może zjeść wyłącznie bakterię wielkości X, powiększając
+Formalnie monety ma na początku wielkość X, i może zjeść wyłącznie bakterię wielkości X, powiększając
 się do wielkości 2*X. Czynność tą powtaża póki można znaleźć pokarm odpowiedniej wielkości. Jeśli
-w pewnej chwili nie ma bakterii o wielkości X, to amoeba przestaje rosnąć i nic już nie zje. 
+w pewnej chwili nie ma bakterii o wielkości X, to monety przestaje rosnąć i nic już nie zje. 
 
 Mając daną początkową wielkość amoeby i wielkości bakterii w jej okolicy, podać końcową wielkość amoeby. 
 
@@ -13,7 +13,14 @@ Mając daną początkową wielkość amoeby i wielkości bakterii w jej okolicy,
 
 
 def amoeba(x: int, bacteria: List[int]):
-    return 0
+    s = set()
+    for b in bacteria:
+        s.add(b)
+    while True:
+        if s.__contains__(x):
+            x *= 2
+        else:
+            return x
 
 
 class TestSum(unittest.TestCase):
