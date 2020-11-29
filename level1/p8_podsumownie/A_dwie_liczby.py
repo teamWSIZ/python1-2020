@@ -43,6 +43,9 @@ class TestSum(unittest.TestCase):
     def test_5(self):
         self.assertEqual(dwie(0, 12), 5, 'Piąty')
 
+    def test_6(self):
+        self.assertEqual(dwie(12, 0), 0, 'Szósty')
+
     def test_rnd1(self):
         random.seed(111)
         a = []
