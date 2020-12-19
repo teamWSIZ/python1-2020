@@ -24,6 +24,32 @@ def parse_traceroute_line_linux(line: str) -> TracerouteNode:
     return TracerouteNode(ip, hostname, round(rtt))
 
 
+def parse_traceroute_line_windows(line: str):
+    ip = ''
+    hostname = 'not specified'
+    rt_time = 1
+
+    if not line.__contains__('*'):
+        x = line.split(' ')
+
+        if x[-1].__contains__('[') and x[-1].__contains__(']'):
+            ip = x[-1][1:-1]
+            hostname = x[-2]
+        else:
+            ip = x[-1]
+        if not x[6].__contains__('<'):
+            try:
+                avg = int(x[6]) + int(x[12]) + int(x[18])
+            except:
+                rt_time = 666
+
+    else:
+        return TracerouteNode('hidden', 'hidden', 0, True)
+    return TracerouteNode(ip, hostname, rt_time)
+
+
+
+
 class TestSum(unittest.TestCase):
 
     def test_1(self):
