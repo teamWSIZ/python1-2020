@@ -7,5 +7,5 @@ class User:
     age: int
 
 
-u = User('tester', '15')
+u = User('tester', 15)
 print(u)

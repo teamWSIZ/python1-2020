@@ -9,18 +9,25 @@ class TracerouteNode:
     rt_time: int
     hidden: bool = False
 
+    @staticmethod
+    def hidden_node():
+        return TracerouteNode('hidden', 'hidden', 0, True)
+
 
 def parse_traceroute_line_linux(line: str) -> TracerouteNode:
-    if line.__contains__('*'):
-        return TracerouteNode('', '', 0, True)
-    line = line.replace(' !X', '')
-    s = line.split(' ')
-    print(s)
-    hostname = s[3]
-    ip = s[4][1:-1]
-    rtts = [s[6], s[9], s[12]]
-    rtt = sum([float(f) for f in rtts]) / 3
-    # do napisania
+    line = line.strip()
+    try:
+        if line.__contains__('*'):
+            return TracerouteNode('', '', 0, True)
+        line = line.replace(' !X', '')
+        s = line.split(' ')
+        print(s)
+        hostname = s[2]
+        ip = s[3][1:-1]
+        rtt = float(s[5])
+    except:
+        print(f'error parsing line: [{line}]')
+        return TracerouteNode.hidden_node()
     return TracerouteNode(ip, hostname, round(rtt))
 
 
@@ -46,8 +53,6 @@ def parse_traceroute_line_windows(line: str):
     else:
         return TracerouteNode('hidden', 'hidden', 0, True)
     return TracerouteNode(ip, hostname, rt_time)
-
-
 
 
 class TestSum(unittest.TestCase):
