@@ -43,19 +43,20 @@ class Airplane(LocalizedObject):
 
 
 class Environment:
-    physical_objects: List[LocalizedObject] = []
+    flying_objects: List[LocalizedObject] = []
 
     def add_object(self, p: LocalizedObject):
-        self.physical_objects.append(p)
+        self.flying_objects.append(p)
 
     def simulate(self, t0, t1, dt):
+        #todo: callbacks; add callback before_step(), after_step()
         """
         Symuluje zachowanie wszystkich obiektów środowiska od t0 do t1 z krokiem czasowym dt
         """
         t = t0
         while t <= t1:
             print('----')
-            for p in self.physical_objects:
+            for p in self.flying_objects:
                 p.step(t, dt)
                 print(p.position)
             t += dt
