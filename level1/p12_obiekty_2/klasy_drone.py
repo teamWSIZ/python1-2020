@@ -49,7 +49,6 @@ class Environment:
         self.flying_objects.append(p)
 
     def simulate(self, t0, t1, dt):
-        #todo: callbacks; add callback before_step(), after_step()
         """
         Symuluje zachowanie wszystkich obiektów środowiska od t0 do t1 z krokiem czasowym dt
         """
