@@ -1,4 +1,5 @@
 import heapq
+# https://dbader.org/blog/priority-queues-in-python
 
 q = []
 
