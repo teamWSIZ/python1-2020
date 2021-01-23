@@ -20,9 +20,9 @@ url = 'https://data-live.flightradar24.com/zones/fcgi/feed.js?bounds=50.32,49.87
 headers = {'User-Agent': 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:78.0) Gecko/20100101 Firefox/78.0'}
 
 r = requests.get(url, headers=headers)
-# r = requests.get(url)
-print(r.json())
+# print(r.json())
 g: Dict = r.json()
 for (k, v) in g.items():
-    if type(v) == type([]):
-        print(f'{k} -> {v}, {v[9]}')
+    print(k,v)
+#     if type(v) == type([]):
+#         print(f'{k} -> {v}, {v[9]}')
