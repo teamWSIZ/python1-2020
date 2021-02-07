@@ -1,4 +1,4 @@
-from level1.p14_nnn.electronics_base import PowerSource, PoweredElement, Board
+from level1.p14_inheritance_electronics.electronics_base import PowerSource, PoweredElement, Board
 
 
 class LiIonBattery(PowerSource):

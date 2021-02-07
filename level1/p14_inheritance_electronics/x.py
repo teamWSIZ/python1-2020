@@ -5,10 +5,8 @@
 #     source: ...     #źródło zasilania
 #     drains: List    #podłączone kolejne elemnty
 #     pass
+from level1.p14_inheritance_electronics.declarations import ChainNode
 
-# forward declaration
-class ChainNode:
-    pass
 
 class ChainNode:
     previous: ChainNode
@@ -16,3 +14,4 @@ class ChainNode:
 
 
 c = ChainNode()
+
