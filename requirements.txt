@@ -3,3 +3,4 @@ cairocffi
 
 geopy
 requests
+Pillow
