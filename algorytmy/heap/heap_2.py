@@ -1,4 +1,5 @@
 from heapq import heapify, heappush
+from statistics import median_low
 
 from algorytmy.utils import print_heap
 
@@ -43,3 +44,6 @@ Na koniec znaleźć najmniejszy element zbioru oraz:
   
 Wykorzystać strukturę heap. 
 """
+
+
+print(median_low([1,1,1,2,3,4,4,3,2,12,1]))
