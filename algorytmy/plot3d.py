@@ -30,8 +30,7 @@ def plotdata(data: List[MData]):
 
     cmap = cm.get_cmap(name='jet', lut=None)
 
-    im2 = ax.tricontourf(xxx, yyy, zzz, 150, cmap=cmap,
-                         norm=plt.Normalize(vmin=0, vmax=100), alpha=0.9)
+    im2 = ax.tricontourf(xxx, yyy, zzz, 150, cmap=cmap, norm=plt.Normalize(vmin=0, vmax=10), alpha=0.9)
 
     plt.tick_params(bottom=False, left=False, labelbottom=False, labelleft=False)
 
@@ -49,6 +48,6 @@ def plotdata(data: List[MData]):
 data = []
 for i in range(10):
     for j in range(10):
-        data.append(MData(i * 0.1, j * 0.1, i ** 2 + j ** 2))
+        data.append(MData(i * 0.1, j * 0.1, i * j))
 
 plotdata(data)
