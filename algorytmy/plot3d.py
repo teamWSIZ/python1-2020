@@ -16,11 +16,12 @@ class MData:
 
 def plotdata(data: List[MData]):
     xxx, yyy, zzz = [], [], []
-
+    mx = 0
     for c in data:
         xxx.append(c.x)
         yyy.append(c.y)
         zzz.append(c.z)
+        mx = max(mx, c.z)
 
     ####
     fig, ax = plt.subplots(1, 1)
@@ -30,7 +31,7 @@ def plotdata(data: List[MData]):
 
     cmap = cm.get_cmap(name='jet', lut=None)
 
-    im2 = ax.tricontourf(xxx, yyy, zzz, 150, cmap=cmap, norm=plt.Normalize(vmin=0, vmax=10), alpha=0.9)
+    im2 = ax.tricontourf(xxx, yyy, zzz, 150, cmap=cmap, norm=plt.Normalize(vmin=0, vmax=mx), alpha=0.9)
 
     plt.tick_params(bottom=False, left=False, labelbottom=False, labelleft=False)
 
@@ -44,10 +45,9 @@ def plotdata(data: List[MData]):
     # plt.savefig(filename)
     # print(f'saved as {filename}')
 
-
-data = []
-for i in range(10):
-    for j in range(10):
-        data.append(MData(i * 0.1, j * 0.1, i * j))
-
-plotdata(data)
+# data = []
+# for i in range(10):
+#     for j in range(10):
+#         data.append(MData(i * 0.1, j * 0.1, i * j))
+#
+# plotdata(data)

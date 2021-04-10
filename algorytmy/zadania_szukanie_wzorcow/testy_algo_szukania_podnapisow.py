@@ -1,6 +1,8 @@
+from math import log
 from random import randint
 from typing import Tuple
 
+from algorytmy.plot3d import MData, plotdata
 from algorytmy.utils import ts, delta
 
 """
@@ -12,6 +14,7 @@ O(N * M)
 
 
 """
+
 
 def mfind(tekst: str, pattern: str):
     """
@@ -43,8 +46,8 @@ def run(N: int, M: int) -> Tuple[float, float]:
     :return:
     """
     # generujemy napis i pattern
-    tekst = 'a' * N + 'x'  # prosty powtarzający się tekst -- długo zgodny z pattern
-    # tekst = ''.join([chr(randint(97, 122)) for _ in range(N)]) #tekst szybko niezgodny z kazdą pattern
+    # tekst = 'a' * N + 'x'  # prosty powtarzający się tekst -- długo zgodny z pattern
+    tekst = ''.join([chr(randint(97, 122)) for _ in range(N)]) #tekst szybko niezgodny z kazdą pattern
     pattern = 'a' * M + 'z'
 
     st = ts()
@@ -55,8 +58,13 @@ def run(N: int, M: int) -> Tuple[float, float]:
     return st, en
 
 
-patt_i = 6
-for txt_i in range(patt_i, 20):
-    st, en = run((2 ** txt_i), (2 ** patt_i))
-    print(txt_i, patt_i, f'{(en - st) * 1000:.3f}ms')
-    # tu mamy dane typu (x,y,z), gdzie x == txt_i, y=patt_i, z=czas wykonania... potrzeba density plot
+# patt_i = 6
+data = []
+for patt_i in range(5, 60):
+    for txt_i in range(5, 60):
+        st, en = run(int(2 ** (txt_i/4)), int(2 ** (patt_i/4)))
+        print(txt_i, patt_i, f'{(en - st) * 1000:.3f}ms')
+        data.append(MData(patt_i, txt_i, log(en - st + 1)))
+        # tu mamy dane typu (x,y,z), gdzie x == txt_i, y=patt_i, z=czas wykonania... potrzeba density plot
+
+plotdata(data)
