@@ -1,18 +1,10 @@
-from datetime import datetime
-from random import randint
+from typing import Set
 
-from algorytmy.utils import delta
+from algorytmy.utils import ts, delta
+from hash_utils import *
+# from utils import ts, delta
 
-
-def ts():
-    return datetime.now().timestamp()
-
-
-def random_string(nsymbols, length):
-    num = []
-    for i in range(length):
-        num.append(chr(randint(0, nsymbols - 1) + 97))  # 'a' + ...
-    return ''.join(num)
+MOD = 1000000007
 
 
 def long(a: str, b: str):
@@ -26,6 +18,21 @@ def long(a: str, b: str):
                 break
             if b.__contains__(a[start:start + sublen]):
                 return a[start:start + sublen]
+
+
+def get_hashes(s, sublen):
+    # znajduje wszystkie hash-e dla substring-ów długości `sublen`
+    hashes = set()
+    roll_p = 1234
+    ppow = get_ppow(roll_p, sublen)
+
+    if len(s) >= sublen:
+        h = compute_hash(s, roll_p, MOD)
+        hashes.add(h)
+        for i in range(1, len(s) - sublen):
+            h = shift_hash(h, ppow, MOD, roll_p, s[i + sublen], s[i - 1])
+            hashes.add(h)
+    return hashes
 
 
 def faster(a: str, b: str):
@@ -49,21 +56,51 @@ def faster(a: str, b: str):
         else:
             mx_sublen = sublen
         sublen = (mi_sublen + mx_sublen) // 2
-    return a[best_start:best_start + sublen]
+    return sublen
+
+
+def fast_hash_solution(a: str, b: str):
+    if len(a) > len(b):
+        return '!'
+    mi_sublen = 1
+    mx_sublen = len(a)
+    sublen = (mi_sublen + mx_sublen) // 2
+    best_start = -1
+    while mx_sublen - mi_sublen > 1:
+        found = False
+
+        a_hashes: Set = get_hashes(a, sublen)
+        b_hashes: Set = get_hashes(b, sublen)
+
+        for h in a_hashes:
+            if h in b_hashes:
+                found = True
+                break
+        if found:
+            mi_sublen = sublen
+        else:
+            mx_sublen = sublen
+        sublen = (mi_sublen + mx_sublen) // 2
+    return sublen
 
 
 # [!!!!!!!!!!!!...................]
 # ---> O(N * log(N))
 
-NS = 6
-LEN = 3200
+letters = 26
+LEN = 1600
 st = ts()
+a = random_string(nsymbols=letters, length=LEN)
+b = random_string(nsymbols=letters, length=LEN)
 # gg = long(random_string(nsymbols=NS, length=LEN), random_string(nsymbols=NS, length=LEN))
-gg = faster(random_string(nsymbols=NS, length=LEN), random_string(nsymbols=NS, length=LEN))
+# gg = faster(a, b)
+gg = fast_hash_solution(a, b)
 ed = ts()
 delta(st, ed)
 
 """
+Simple algo, O(N**3)
+
 100     1.571
 200     7.853
 300     24.333
@@ -72,4 +109,27 @@ delta(st, ed)
 800     366.106
 1600    2631.371
 3200    19903
+
+Faster,  N**2 log(N)
+1600    12.895
+3200    47.498
+6400    206.809
+12800   840.949
+25600   3624.133
+51200   15974
+
+Hash-Based solution N log(N)
+
+1600    19
+3200    42
+6400    88
+12800   194
+25600   410
+51200   740
+102400  886
+204800  1653
+409600  3010
+819200  5678
+1000000 6931
+
 """
