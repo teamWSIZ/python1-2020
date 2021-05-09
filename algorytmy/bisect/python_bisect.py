@@ -1,13 +1,13 @@
-from bisect import bisect_left
+from bisect import bisect_left, bisect_right
 
 from algorytmy.utils import ts
 
 w = [1, 4, 8, 10, 50]
 x = 10
 
-i = bisect_left(w, x)
+i = bisect_left(w, x) # 3
 print(i)
-print(w[i])
+print(w[i])     # 10
 
 from random import randint
 
