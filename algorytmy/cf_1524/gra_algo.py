@@ -5,7 +5,7 @@ def simple_bfs_pass(n, ch, w, start):
     # zwraca długości ścieżek do "dolnych" nodów grafu...
     # "dolny" node, to taki który nie ma "dzieci"
     q = deque()  # w deque trzymamy parę (node, koszt_osiągnięcia_go)
-    q.append((0, 0))
+    q.append((start, w[start]))
     min_cost = [10 ** 9] * n
     bottom_nodes = set()
     while len(q):
