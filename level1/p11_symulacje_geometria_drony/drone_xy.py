@@ -11,7 +11,7 @@ class Drone:
     __pos: List[float] = [0, 0, 0]
     vel: List[float] = [0, 0, 0]
     acc: List[float] = [0, 0, -10]
-    drone_axis: List[float] = [1, 0, 0]  # x == północ
+    drone_axis: List[float] = [1, 0, 0]  # sim_annealing == północ
     mag: List[float] = [0.71, 0, -0.71]  # trochę na północ, trochę "w dół"
 
     def step(self, dt: float):
@@ -48,7 +48,7 @@ def measure_magnetic(d: Drone):
 
 def measure_gyro(d: Drone):
     """
-    :return: Prędkości kątowe wokół osi (x,y,z)
+    :return: Prędkości kątowe wokół osi (sim_annealing,y,z)
     """
     return [0, 0, 0]
 
@@ -64,8 +64,8 @@ if __name__ == '__main__':
     #     t += dt
 
     print(d.measure_gps())
-    print(d.measure_orientation()) # sprawdzenie czy wektor pola magnetycznego jest na początku w płaszczyźnie (x,y)
+    print(d.measure_orientation()) # sprawdzenie czy wektor pola magnetycznego jest na początku w płaszczyźnie (sim_annealing,y)
 
     # typowe zadania:
-    # napisać program który używając przśpieszeń |a|=1 dojedzie z punktu (0,0) do punktu (x,y)
+    # napisać program który używając przśpieszeń |a|=1 dojedzie z punktu (0,0) do punktu (sim_annealing,y)
     # napisać program który zmieni kierunek poruszania się drona z (1,0) do (0,1)

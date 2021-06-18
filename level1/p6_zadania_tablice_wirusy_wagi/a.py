@@ -3,7 +3,7 @@ from random import randint, seed
 # seed(111)
 for i in range(100):
     x = randint(1, 30)
-    # print(x)
+    # print(sim_annealing)
 
 
 # idea testów: wygenerować 2 listy długości 9,

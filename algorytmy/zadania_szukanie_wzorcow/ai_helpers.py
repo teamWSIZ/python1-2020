@@ -45,5 +45,5 @@ print(find_pattern_exact([0, 0, 0, 1, 1, 0, 0], [1, 1]))
 en = ts()
 delta(st, en)
 
-# print('00010'.find('x'))
+# print('00010'.find('sim_annealing'))
 # print(int('00000100'))

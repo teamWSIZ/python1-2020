@@ -3,7 +3,7 @@ from typing import List
 
 """
 Dana jest tablica liczb, np. `w = [1,3,2,1,1]`. Lis Ciel startuje na pozycji 0, 
-i będąc na pozycji `x` przechodzi  po minucie na pozycję `w[x]`. 
+i będąc na pozycji `sim_annealing` przechodzi  po minucie na pozycję `w[sim_annealing]`. 
 Sprawdzić czy Ciel wróci na pozycję 0 (po pewnym, możliwe że nawet długim, czasie). 
 
 """

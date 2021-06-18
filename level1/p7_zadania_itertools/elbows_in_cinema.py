@@ -14,7 +14,7 @@ Policzyć ile konfliktów powstanie w danym rzędzie.
 
 
 def elbows(row):
-    previous = 'x'
+    previous = 'sim_annealing'
     count = 0
     for next in row:
         if next == 'L' and previous == 'R':

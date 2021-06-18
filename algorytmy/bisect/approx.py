@@ -1,5 +1,5 @@
 """
-Problem: znaleźć takie "x", że f(x) = x**3 + x == 1
+Problem: znaleźć takie "sim_annealing", że f(sim_annealing) = sim_annealing**3 + sim_annealing == 1
 
 """
 
@@ -9,7 +9,7 @@ def f(x):
 
 
 bmi = 0
-bmx = 10  # to jest napewno więcej niż poszukiwany x
+bmx = 10  # to jest napewno więcej niż poszukiwany sim_annealing
 b = (bmi + bmx) / 2
 
 while bmx - bmi > 10**(-10):
@@ -22,4 +22,4 @@ while bmx - bmi > 10**(-10):
         print(' →')
     b = (bmi + bmx) /2
 
-print(f'dla x={b}, mamy f(x)={f(b)}')
+print(f'dla sim_annealing={b}, mamy f(sim_annealing)={f(b)}')

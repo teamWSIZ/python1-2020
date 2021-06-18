@@ -4,3 +4,6 @@ cairocffi
 geopy
 requests
 Pillow
+cachetools
+
+asyncache

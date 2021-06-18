@@ -46,7 +46,7 @@ def run(N: int, M: int) -> Tuple[float, float]:
     :return:
     """
     # generujemy napis i pattern
-    # tekst = 'a' * N + 'x'  # prosty powtarzający się tekst -- długo zgodny z pattern
+    # tekst = 'a' * N + 'sim_annealing'  # prosty powtarzający się tekst -- długo zgodny z pattern
     tekst = ''.join([chr(randint(97, 122)) for _ in range(N)]) #tekst szybko niezgodny z kazdą pattern
     pattern = 'a' * M + 'z'
 
@@ -65,6 +65,6 @@ for patt_i in range(5, 60):
         st, en = run(int(2 ** (txt_i/4)), int(2 ** (patt_i/4)))
         print(txt_i, patt_i, f'{(en - st) * 1000:.3f}ms')
         data.append(MData(patt_i, txt_i, log(en - st + 1)))
-        # tu mamy dane typu (x,y,z), gdzie x == txt_i, y=patt_i, z=czas wykonania... potrzeba density plot
+        # tu mamy dane typu (sim_annealing,y,z), gdzie sim_annealing == txt_i, y=patt_i, z=czas wykonania... potrzeba density plot
 
 plotdata(data)

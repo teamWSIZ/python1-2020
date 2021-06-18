@@ -41,7 +41,7 @@ def check_board(board):
             return False
 
     # sprawdzamy kwadraty
-    # tu zrobić jakoś pętlę po x skaczącą co 2 ... i wewnątrz zebrać kwadrat o lewym górnym rogu w (x,x)
+    # tu zrobić jakoś pętlę po sim_annealing skaczącą co 2 ... i wewnątrz zebrać kwadrat o lewym górnym rogu w (sim_annealing,sim_annealing)
     return True
 
 

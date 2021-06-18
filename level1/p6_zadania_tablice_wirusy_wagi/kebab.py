@@ -5,7 +5,7 @@ from random import randint, seed
 """
 Późno wieczorem w ulubionej kebabiarni po koncercie ustawiła się kolejka.
  Lista zamówień jest podana -- składa się wyłącznie z liczby kebabów które każdy z klientów 
- ma zamiar zamówić. Każdy kebab wymaga `x` porcji mięsa i `y` porcji sałaty. 
+ ma zamiar zamówić. Każdy kebab wymaga `sim_annealing` porcji mięsa i `y` porcji sałaty. 
  Kebabiarnia ma do dyspozycji już tylko `xx` porcji mięsa i `yy` porcji sałaty. 
  Podać numer (startując od 0) ostatniego klienta który zostanie obsłużony, 
 tj. całe jego zamówienie zostanie zrealizowane. 

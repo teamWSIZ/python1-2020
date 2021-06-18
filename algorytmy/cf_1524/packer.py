@@ -75,37 +75,113 @@ def random_attempt(epsilon=0.01):
     return Agent(taken, monety[at:], sum, len(taken))
 
 
-def modify_attempt(source: Agent):
+def modify_attempt(a: Agent):
     # dodajemy losową monetę do agenta
 
-    my_shuffle(source.rejected, k=10)
-    new_taken = source.taken.copy()
-    new_taken.append(source.rejected[-1])
-    new_sum = source.sum + source.rejected[-1]
-    new_rejected = source.rejected[:-1].copy()  # O(N)...   -- obciąża complexity..
+    my_shuffle(a.rejected, k=10)
+    new_taken = a.taken.copy()
+    a.rejected.sort(reverse=True)
+    new_taken.append(a.rejected[-1])
+    new_sum = a.sum + a.rejected[-1]
+    new_rejected = a.rejected[:-1].copy()  # O(N)...   -- obciąża complexity..
 
-    return Agent(new_taken, new_rejected, new_sum, source.score + 1)
+    return Agent(new_taken, new_rejected, new_sum, a.score + 1)
+
+
+def enlarge_agent(a: Agent):
+    # dodajemy losową monetę do agenta `source` (modyfikowany)
+    old_score = a.score
+
+    my_shuffle(a.rejected, k=10)  # ostatni element z .rejected zostanie dodany
+    element = a.rejected[-1]
+    a.taken.append(element)
+    a.sum += element
+    a.rejected = a.rejected[:-1]
+    a.score += 1
+    if not is_acceptable(a):
+        # rollback
+        a.score -= 1
+        a.sum -= element
+        a.rejected.append(element)
+        a.taken = a.taken[:-1]
+
+
+def modify_agent(a: Agent):
+    # wymieniamy jedną z wziętych liczb z jedną rejected; akceptujemy zmianę jeśli jest OK
+    old_score = a.score
+
+    # randomizacja
+    i = randint(0, len(a.taken) - 1)
+    t = a.taken[i]
+    a.taken[i] = a.taken[-1]
+    a.taken[-1] = t
+    i = randint(0, len(a.rejected) - 1)
+    t = a.rejected[i]
+    a.rejected[i] = a.rejected[-1]
+    a.rejected[-1] = t
+
+    e1 = a.rejected[-1]
+    e2 = a.taken[-1]
+    a.sum += e1 - e2
+    a.taken = a.taken[:-1]
+    a.rejected = a.rejected[:-1]
+    a.taken.append(e1)
+    a.rejected.append(e2)
+
+    if not is_acceptable(a):
+        # rollback
+        a.sum -= e1 - e2
+        a.taken = a.taken[:-1]
+        a.rejected = a.rejected[:-1]
+        a.taken.append(e2)
+        a.rejected.append(e1)
 
 
 agents: List[Agent] = []
 
 # od tego miejsca -- "magia" różnych pomysłów na zarządzanie agentami...
 
-for j in range(5000):
-    for i in range(100):
+nops = 0
+
+while len(agents) < 300:
+    a = random_attempt()
+    nops += 1
+    if is_acceptable(a):
+        agents.append(a)
+
+for j in range(50000):
+    for i in range(10):
         a = random_attempt()
+        nops += 1
         if is_acceptable(a):
             agents.append(a)
 
     agents.sort(key=lambda a: a.score, reverse=True)
-    agents = agents[:100]
 
-    selected = agents[:10]
-    for a in selected:
-        na = modify_attempt(a)
-        if is_acceptable(na):
-            agents.append(na)
+    to_modify = agents[-10:]
+    for x in to_modify:
+        a = modify_attempt(x)
+        if is_acceptable(a):
+            agents.append(a)
+
+    agents = agents[:30]
+    agents.sort(key=lambda a: a.score, reverse=True)
+
+    # selected = agents[:10]
+    # for a in selected:
+    #     nops += 1
+    #     enlarge_agent(a)
+    # selected = agents[10:20]
+    # for a in selected:
+    #     nops += 1
+    #     modify_agent(a)
+
+    # agents.sort(key=lambda a: a.score, reverse=True)
+
+    if j % 200 == 0:
+        print(f'best:{agents[0].score}')
 
 agents.sort(key=lambda a: a.score, reverse=True)
 
 print([a.score for a in agents][:10])
+print(f'nops={nops}')

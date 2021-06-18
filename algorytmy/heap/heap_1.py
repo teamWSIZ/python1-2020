@@ -27,7 +27,7 @@ st = ts()
 # ss = set()
 for x in w:
     heappush(h, x)
-#     ss.add(x)
+#     ss.add(sim_annealing)
 en = ts()
 delta(st, en)
 

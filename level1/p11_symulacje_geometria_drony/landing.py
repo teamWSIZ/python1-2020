@@ -12,7 +12,7 @@ while x > 0:
     t += dt
     v += random.gauss(0, 0.005)  # lekki losowy wiatr w pionie
 
-    # todo: napisać coś, co ustawia wartość `a` w zależności od x, v; załóżmy, że abs(a) < 20
+    # todo: napisać coś, co ustawia wartość `a` w zależności od sim_annealing, v; załóżmy, że abs(a) < 20
     if v < 0:
         if x < 7:
             a = 11.1

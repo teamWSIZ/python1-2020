@@ -12,4 +12,4 @@ while t < 1:
 
 
 
-# x = a * t**2 / 2
+# sim_annealing = a * t**2 / 2

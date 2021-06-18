@@ -1,7 +1,7 @@
-# for x in range(0, 1000):
+# for sim_annealing in range(0, 1000):
 #     for y in range(0, 1000):
-#         if x ** 2 - y ** 2 == 25:
-#             print(x, y)
+#         if sim_annealing ** 2 - y ** 2 == 25:
+#             print(sim_annealing, y)
 from math import hypot
 from typing import Tuple
 

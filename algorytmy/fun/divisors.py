@@ -35,8 +35,8 @@ w = [next_random() for _ in range(CNT)]
 
 print(w[:10])
 
-# hint.. stworzyć tablicę `s`, z interpretacją s[x].. ile razy `150` występuje na lewo od `x`, czyli
-# na indeksach `0, 1, 2, ..., x-1`
+# hint.. stworzyć tablicę `s`, z interpretacją s[sim_annealing].. ile razy `150` występuje na lewo od `sim_annealing`, czyli
+# na indeksach `0, 1, 2, ..., sim_annealing-1`
 
 # Zadanie: mamy `w`, obliczyć `s`
 
@@ -51,7 +51,7 @@ ww = [0, 50, 80, 300, 412]
 
 pozycje = defaultdict(lambda: [])
 for i, x in enumerate(w):
-    pozycje[x].append(i)  # pozycje na których występuje "x"
+    pozycje[x].append(i)  # pozycje na których występuje "sim_annealing"
 
 for x in range(250):
     print(x, pozycje[x])

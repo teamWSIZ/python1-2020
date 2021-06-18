@@ -22,7 +22,7 @@ st = ts()
 hs = set()  # slower!
 for x in w:
     heappush(h, x)
-    # hs.add(x)
+    # hs.add(sim_annealing)
 
 en = ts()
 delta(st, en)
