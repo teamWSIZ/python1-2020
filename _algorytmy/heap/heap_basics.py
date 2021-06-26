@@ -1,6 +1,6 @@
 from heapq import heappush, heappop
 
-from algorytmy.utils import ts, delta
+from _algorytmy.utils import ts, delta
 
 h = []
 heappush(h, 5)

@@ -1,7 +1,7 @@
 from random import randint
 from typing import List
 
-from algorytmy.utils import ts, delta
+from _algorytmy.utils import ts, delta
 
 
 def num_to_list(x, len):

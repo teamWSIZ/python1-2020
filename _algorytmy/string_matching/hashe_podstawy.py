@@ -1,6 +1,6 @@
 from random import randint
 
-from algorytmy.utils import ts, delta
+from _algorytmy.utils import ts, delta
 
 h = set([5, 8, 10, 34, 8, 5])
 

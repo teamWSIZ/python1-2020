@@ -2,8 +2,8 @@ from math import log
 from random import randint
 from typing import Tuple
 
-from algorytmy.plot3d import MData, plotdata
-from algorytmy.utils import ts, delta
+from _algorytmy.plot3d import MData, plotdata
+from _algorytmy.utils import ts, delta
 
 """
 

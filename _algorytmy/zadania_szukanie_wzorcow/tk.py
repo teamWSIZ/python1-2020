@@ -1,6 +1,6 @@
 from random import getrandbits
 
-from algorytmy.utils import ts, delta
+from _algorytmy.utils import ts, delta
 
 
 def generate_n_lists(n, m):

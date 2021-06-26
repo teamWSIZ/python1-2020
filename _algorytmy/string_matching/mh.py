@@ -1,6 +1,6 @@
 from typing import Set
 
-from algorytmy.utils import ts, delta
+from _algorytmy.utils import ts, delta
 from hash_utils import *
 # from utils import ts, delta
 

@@ -5,7 +5,7 @@
 from heapq import heappush, heappop
 from random import randint, seed
 
-from algorytmy.utils import ts, delta
+from _algorytmy.utils import ts, delta
 
 h = []
 

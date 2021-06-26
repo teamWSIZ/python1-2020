@@ -1,7 +1,7 @@
 from heapq import heapify, heappush
 from statistics import median_low
 
-from algorytmy.utils import print_heap
+from _algorytmy.utils import print_heap
 
 h = [(5, 'a'), (7, 'c'), (1, 'z'), (1, 'a')]
 

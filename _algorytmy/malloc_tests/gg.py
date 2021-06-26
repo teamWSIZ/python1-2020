@@ -1,4 +1,4 @@
-from algorytmy.utils import ts
+from _algorytmy.utils import ts
 
 st = ts()
 x = 0

@@ -10,7 +10,7 @@ len(w) = 10000
 """
 from random import choice, shuffle, seed, randint
 
-from algorytmy.utils import ts
+from _algorytmy.utils import ts
 
 
 def my_shuffle(ww, k=100):

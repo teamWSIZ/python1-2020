@@ -1,4 +1,4 @@
-from algorytmy.utils import ts
+from _algorytmy.utils import ts
 
 w = [0] * (10**4)
 st = ts()

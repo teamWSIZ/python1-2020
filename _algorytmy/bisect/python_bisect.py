@@ -1,6 +1,6 @@
 from bisect import bisect_left, bisect_right
 
-from algorytmy.utils import ts
+from _algorytmy.utils import ts
 
 w = [1, 4, 8, 10, 50]
 x = 10

@@ -3,11 +3,11 @@ from time import sleep
 
 from faker import Faker
 
-from algorytmy.utils import ts
+from _algorytmy.utils import ts
 
 fake = Faker()
 
-from algorytmy.cache_.user import User
+from _algorytmy.cache_.user import User
 
 
 # todo: write cached version of this method!
