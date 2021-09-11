@@ -7,3 +7,9 @@ Pillow
 cachetools
 
 asyncache
+
+# do "data mining"
+sklearn
+matplotlib
+numpy
+scipy
