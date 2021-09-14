@@ -3,7 +3,7 @@ from sklearn.neighbors import kneighbors_graph
 
 from _algorytmy.clustering.utils import ts
 
-n_samples = 10 ** 4
+n_samples = 10 ** 5
 dataset = datasets.make_blobs(n_samples=n_samples, n_features=10, centers=4, random_state=2,
                               cluster_std=[0.2, 0.2, 0.5, 0.7])
 
