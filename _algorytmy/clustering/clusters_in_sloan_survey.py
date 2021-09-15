@@ -39,8 +39,8 @@ with h5py.File("Galaxy10.h5", "r") as F:
     labels = np.array(F["ans"])
 
 print('data loaded..')
-n_train = 800
-n_test = 15000
+n_train = 1000
+n_test = 10000
 n_offset = 1000
 flat_size = 69 * 69 * 3
 
@@ -67,9 +67,9 @@ def show_image(imgdata):
     img.show()
 
 
-# for i in range(0):
-#     show_image(images[i])
-#     print(labels[i])
+for i in range(5):
+    show_image(images[i])
+    print(labels[i])
 
 
 # Plot distribution - as bar plot
@@ -85,7 +85,7 @@ plt.savefig("galaxy10_subset.svg")
 # 2D Embedding
 # UMAP
 reducer = umap.UMAP(n_components=2, n_neighbors=40, random_state=42, transform_seed=42, verbose=False)
-reducer.fit(X_train)
+reducer.reducer(X_train)
 
 print(f'X_train shape: {X_train.shape}')  # (217, 14283)
 galaxy10_umap = reducer.transform(X_train)  # umap-reduced dataset
@@ -108,7 +108,7 @@ plt.savefig("galaxy10_2D_umap.svg")
 
 # get a UMAP reducer first..
 reducer = umap.UMAP(n_components=2, n_neighbors=15, random_state=42, transform_seed=42, verbose=False)
-reducer.fit(X_train, y_train)
+reducer.reducer(X_train, y_train)
 
 galaxy10_umap_supervised = reducer.transform(X_train)
 

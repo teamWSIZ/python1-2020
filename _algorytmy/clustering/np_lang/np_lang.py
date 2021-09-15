@@ -13,3 +13,5 @@ print('---', np.ndarray.flatten(X[0, :]))
 
 d = np.array([0, 1, 1, 0])
 print(np.unique(d))  # w/o counts: [0 1], w/ counts (array([0, 1]), array([2, 2]))
+
+print(X.tolist())
